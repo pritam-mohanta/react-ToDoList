@@ -13,16 +13,18 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const db = 'mongodb+srv://amin-Pritam:Pritam@#32@cluster0.hg4szdo.mongodb.net/todolistDB?retryWrites=true&w=majority';
+// const db = 'mongodb+srv://amin-Pritam:Pritam@#32@cluster0.hg4szdo.mongodb.net/todolistDB?retryWrites=true&w=majority';
 
-mongoose.connect(db,{
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedToplogy: true,
-  useFindAndModify: false
-}).then(()=>{
-  console.log('connection successfull');
-}).catch((err)=>console.log('no connection'));
+// mongoose.connect(db,{
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedToplogy: true,
+//   useFindAndModify: false
+// }).then(()=>{
+//   console.log('connection successfull');
+// }).catch((err)=>console.log('no connection'));
+
+mongoose.connect("mongodb+srv://amin-Pritam:jXEKIi6spbEVlfDv@cluster0.hg4szdo.mongodb.net/todolistDB");
 
 const itemSchema = {
   name:String
@@ -162,13 +164,13 @@ app.get("/about", function(req, res){
 });
 
 
-let port = process.env.PORT;
-if(port === null || poet === ""){
-  port = 3000;
-}
+// let port = process.env.PORT;
+// if(port === null || port === ""){
+//   port = 3000;
+// }
 
-app.listen(port);
+// app.listen(port);
 
-app.listen(port, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server has started");
 });
